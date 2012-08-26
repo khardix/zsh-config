@@ -1,0 +1,4 @@
+#
+# User-specific aliases
+
+alias yum='sudo yum'
