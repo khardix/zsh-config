@@ -10,6 +10,8 @@ autoload -U colors #init colors
 colors
 autoload -U promptinit #init prompt themes
 promptinit
+autoload -U zsh-mime-setup #do file association
+zsh-mime-setup
 
 #allow tab completion in the middle of a word
 setopt COMPLETE_IN_WORD
@@ -57,8 +59,9 @@ bin=~/'.local/bin'
 Films=~/Videos/Films
 Series=~/Videos/Series
 fit=~/Documents/FIT/semestr3
+www=~/system/web_public
 
-: ~bin ~dotfiles ~Films ~Series ~fit #force shell to recognize this dirs
+: ~bin ~dotfiles ~Films ~Series ~fit ~www #force shell to recognize this dirs
 
 #Power options
 setopt NO_BEEP #no beeping, ever
@@ -69,3 +72,7 @@ setopt CORRECT #try to correct typos
 if [[ -r ~dotfiles/zsh/aliasrc ]]; then
   . ~dotfiles/zsh/aliasrc
 fi
+
+
+## Print fortune on launch
+fortune -s

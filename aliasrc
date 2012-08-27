@@ -2,3 +2,6 @@
 # User-specific aliases
 
 alias yum='sudo yum'
+
+# Suffix aliases
+alias -s php='php -f'
