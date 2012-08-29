@@ -1,43 +1,15 @@
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/system/dotfiles/zsh/oh-my-zsh
+#
+# .zshrc is sourced in interactive shells.
+# It should contain commands to set up aliases,
+# functions, options, key bindings, etc.
+#
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="khardix"
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
-
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
-
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
 autoload -U compinit #init completions
 compinit
 autoload -U colors #init colors
 colors
+autoload -U promptinit #init prompt themes
+promptinit
 autoload -U zsh-mime-setup #do file association
 zsh-mime-setup
 
@@ -66,6 +38,20 @@ setopt INC_APPEND_HISTORY SHARE_HISTORY EXTENDED_HISTORY
 #duplicated history
 setopt HIST_IGNORE_DUPS HIST_EXPIRE_DUPS_FIRST HIST_FIND_NO_DUPS
 setopt NO_HIST_BEEP
+
+## Prompt settings
+#main prompt
+PS1="%{${fg_bold[green]}%}%n@%m \
+%{${fg_no_bold[yellow]}%}[%55<...<%3~%<<]\
+%(?.. %{${bg[red]}${fg_bold[white]}%}EC:%?)
+%{${bg[default]}${fg_bold[red]}%}%B%#%b\
+%{${bg[default]}${fg[default]}%} "
+#prompt on the right side; automatically hidden
+RPS1="%B%D{%a %d. %b %Y, %k:%M}%b"
+#next-line prompt
+#PS2=
+#prompt before lines to be executed
+#PS4=
 
 ## Named directories
 dotfiles=~/system/dotfiles
