@@ -2,6 +2,8 @@
 # User-specific aliases
 
 alias yum='sudo yum'
+alias poweroff='systemctl poweroff'
 
 # Suffix aliases
 alias -s php='php -f'
+alias -s odt='oowriter &'
