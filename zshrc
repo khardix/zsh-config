@@ -1,3 +1,6 @@
+# Add .local/bin/ to PATH
+PATH=$PATH:~/.local/bin
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/system/dotfiles/zsh/oh-my-zsh
 
