@@ -4,8 +4,11 @@
 alias yum='sudo yum'
 alias poweroff='systemctl poweroff'
 alias fit-mount='sshfs xstane32@merlin.fit.vutbr.cz:/homes/eva/xs/xstane32 ~/system/fitmount'
+alias fit-umount='fusermount -u ~/system/fitmount'
 alias speaker-unmute='amixer -c 0 set Speaker 100% unmute &>/dev/null'
 alias speaker-mute='amixer -c 0 set Speaker 0% mute &>/dev/null'
+
+alias minecraft='java -jar ~/games/bin/MinecraftSP.jar'
 
 # Suffix aliases
 alias -s php='php -f'

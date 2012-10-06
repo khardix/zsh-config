@@ -53,6 +53,9 @@ setopt LOCAL_OPTIONS LOCAL_TRAPS
 #set error reporting of missing globs
 setopt CSH_NULL_GLOB
 
+#set extended globbing
+setopt EXTENDED_GLOB
+
 #set vim commands for command-line editing
 bindkey -v
 
