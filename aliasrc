@@ -13,3 +13,4 @@ alias minecraft='java -jar ~/games/bin/MinecraftSP.jar'
 # Suffix aliases
 alias -s php='php -f'
 alias -s odt='oowriter &'
+alias -s pdf='evince &'

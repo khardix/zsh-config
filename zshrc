@@ -32,7 +32,7 @@ ZSH_THEME="khardix"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git vi-mode)
+plugins=(git vi-mode taskwarrior)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,8 +81,9 @@ Films=~/Videos/Films
 Series=~/Videos/Series
 fit=~/Documents/FIT/semestr3
 www=~/system/web_public
+games=~/games
 
-: ~bin ~dotfiles ~Films ~Series ~fit ~www ~pthemes #force shell to recognize this dirs
+: ~bin ~dotfiles ~Films ~Series ~fit ~www ~pthemes ~games #force shell to recognize this dirs
 
 #Power options
 setopt NO_BEEP #no beeping, ever
