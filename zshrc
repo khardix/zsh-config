@@ -1,6 +1,9 @@
 # Add .local/bin/ to PATH
 PATH=$PATH:~/.local/bin
 
+# Add Xilinx to PATH
+PATH="$PATH:/opt/Xilinx13.1/ISE_DS/common/bin/lin64:/opt/Xilinx13.1/ISE_DS/PlanAhead/bin:/opt/Xilinx13.1/ISE_DS/ISE/bin/lin64:/opt/Xilinx13.1/ISE_DS/ISE/sysgen/util:/opt/Xilinx13.1/ISE_DS/EDK/bin/lin64:/opt/Xilinx13.1/ISE_DS/EDK/gnu/microblaze/lin64/bin:/opt/Xilinx13.1/ISE_DS/EDK/gnu/powerpc-eabi/lin64/bin"
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/system/dotfiles/zsh/oh-my-zsh
 
