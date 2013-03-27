@@ -4,6 +4,9 @@ PATH=$PATH:~/.local/bin
 # Add Xilinx to PATH
 PATH="$PATH:/opt/Xilinx13.1/ISE_DS/common/bin/lin64:/opt/Xilinx13.1/ISE_DS/PlanAhead/bin:/opt/Xilinx13.1/ISE_DS/ISE/bin/lin64:/opt/Xilinx13.1/ISE_DS/ISE/sysgen/util:/opt/Xilinx13.1/ISE_DS/EDK/bin/lin64:/opt/Xilinx13.1/ISE_DS/EDK/gnu/microblaze/lin64/bin:/opt/Xilinx13.1/ISE_DS/EDK/gnu/powerpc-eabi/lin64/bin"
 
+# Add gcc coloring
+[ -d /usr/lib/colorgcc/bin ] && PATH=/usr/lib/colorgcc/bin:$PATH
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/system/dotfiles/zsh/oh-my-zsh
 
@@ -41,7 +44,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 autoload -U compinit #init completions
-compinit
+compinit -i
 autoload -U colors #init colors
 colors
 autoload -U zsh-mime-setup #do file association
@@ -61,6 +64,10 @@ setopt EXTENDED_GLOB
 
 #set vim commands for command-line editing
 bindkey -v
+
+#and set vim as default editor
+export EDITOR=vim
+export GIT_EDITOR=$EDITOR
 
 ## History setting
 HISTFILE=~/.zshhistory
