@@ -1,13 +1,10 @@
 # Add .local/bin/ to PATH
 PATH=$PATH:~/.local/bin
 
-# Add Xilinx to PATH
-PATH="$PATH:/opt/Xilinx13.1/ISE_DS/common/bin/lin64:/opt/Xilinx13.1/ISE_DS/PlanAhead/bin:/opt/Xilinx13.1/ISE_DS/ISE/bin/lin64:/opt/Xilinx13.1/ISE_DS/ISE/sysgen/util:/opt/Xilinx13.1/ISE_DS/EDK/bin/lin64:/opt/Xilinx13.1/ISE_DS/EDK/gnu/microblaze/lin64/bin:/opt/Xilinx13.1/ISE_DS/EDK/gnu/powerpc-eabi/lin64/bin"
-
 # Add gcc coloring
 [ -d /usr/lib/colorgcc/bin ] && PATH=/usr/lib/colorgcc/bin:$PATH
 
-# Path to your oh-my-zsh configuration.
+# Path to oh-my-zsh
 ZSH=$HOME/system/dotfiles/zsh/oh-my-zsh
 
 # Set name of the theme to load.
@@ -83,27 +80,23 @@ setopt INC_APPEND_HISTORY SHARE_HISTORY EXTENDED_HISTORY
 setopt HIST_IGNORE_DUPS HIST_EXPIRE_DUPS_FIRST HIST_FIND_NO_DUPS
 setopt NO_HIST_BEEP
 
-## Named directories
-pthemes=~/system/dotfiles/zsh/oh-my-zsh/themes
-dotfiles=~/system/dotfiles
-bin=~/'.local/bin'
-Films=~/Videos/Films
-Series=~/Videos/Series
-fit=~/Documents/FIT/semestr3
-www=~/system/web_public
-games=~/games
+# zsh configuration path
+hash -d zsh=$HOME/system/dotfiles/zsh
 
-: ~bin ~dotfiles ~Films ~Series ~fit ~www ~pthemes ~games #force shell to recognize this dirs
+# Named directories
+for names in ~zsh/dirs.d/*.zsh; do
+  source "$names"
+done
 
 #Power options
 setopt NO_BEEP #no beeping, ever
 setopt AUTO_CD #auto cd if forgot cd
 setopt CORRECT #try to correct typos
 
-#aliases - load from external file
-if [[ -r ~dotfiles/zsh/aliasrc ]]; then
-  . ~dotfiles/zsh/aliasrc
-fi
+#aliases - process aliases directory
+for als in ~zsh/aliases.d/*.zsh; do
+  source "$als"
+done
 
 ## Print fortune on launch
 fortune -s
