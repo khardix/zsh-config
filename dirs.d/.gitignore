@@ -1,0 +1,4 @@
+# Ignore anything but global (multi-machine) settings and self
+*
+!.gitignore
+!00-globals.zsh
