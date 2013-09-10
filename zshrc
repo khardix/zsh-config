@@ -79,6 +79,11 @@ setopt INC_APPEND_HISTORY SHARE_HISTORY EXTENDED_HISTORY
 #duplicated history
 setopt HIST_IGNORE_DUPS HIST_EXPIRE_DUPS_FIRST HIST_FIND_NO_DUPS
 setopt NO_HIST_BEEP
+#UP and DOWN keys search in history
+bindkey "OA" up-line-or-search
+bindkey "[A" up-line-or-search
+bindkey "OB" down-line-or-search
+bindkey "[B" down-line-or-search
 
 # zsh configuration path
 hash -d zsh=$HOME/system/dotfiles/zsh
