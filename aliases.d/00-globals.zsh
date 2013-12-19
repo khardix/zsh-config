@@ -2,6 +2,7 @@
 
 alias vimide='vim +NERDTree +TagbarOpen'
 alias gide='gvim +NERDTree +TagbarOpen'
+alias zathura='zathura --fork'
 
 function logout
 {
@@ -19,6 +20,11 @@ function poweroff
   else
     systemctl poweroff
   fi
+}
+
+function subconv
+{
+  iconv -f WINDOWS-1250 -t UTF-8 "$1"|dos2unix
 }
 
 # Suffix aliases
