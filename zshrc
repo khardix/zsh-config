@@ -1,5 +1,5 @@
 # Add .local/bin/ to PATH
-PATH=$PATH:~/.local/bin
+PATH=~/.local/bin:$PATH
 
 # Add gcc coloring
 [ -d /usr/lib/colorgcc/bin ] && PATH=/usr/lib/colorgcc/bin:$PATH
@@ -21,7 +21,7 @@ ZSH_THEME="khardix"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment following line if you want to disable colors in ls
 # DISABLE_LS_COLORS="true"
@@ -35,7 +35,7 @@ ZSH_THEME="khardix"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git vi-mode taskwarrior)
+plugins=(git vi-mode taskwarrior fedpkg)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -46,6 +46,12 @@ autoload -U colors #init colors
 colors
 autoload -U zsh-mime-setup #do file association
 zsh-mime-setup
+
+# zstyle
+zstyle ':completion:*:descriptions' format "%{${fg[red]}= %d =$reset_color%}"
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select
+zstyle ':completion:*' verbose yes
 
 #allow tab completion in the middle of a word
 setopt COMPLETE_IN_WORD
@@ -102,6 +108,9 @@ setopt CORRECT #try to correct typos
 for als in ~zsh/aliases.d/*.zsh; do
   source "$als"
 done
+
+# program specific scripts
+test -r /usr/libexec/mc/mc.sh && source /usr/libexec/mc/mc.sh
 
 ## Print fortune on launch
 fortune -s
