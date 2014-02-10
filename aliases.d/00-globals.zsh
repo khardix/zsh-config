@@ -27,6 +27,16 @@ function subconv
   iconv -f WINDOWS-1250 -t UTF-8 "$1"|dos2unix
 }
 
+function ggr # goto git root
+{
+  local topdir="$(git rev-parse --show-toplevel 2>/dev/null)"
+  if [ "$topdir" ]; then
+    cd "$topdir"
+  else
+    echo "Not a git repo" >&2
+  fi
+}
+
 # Suffix aliases
 alias -s php='php -f'
 alias -s pdf='okular'
