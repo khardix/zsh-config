@@ -4,6 +4,9 @@ PATH=~/.local/bin:$PATH
 # Add gcc coloring
 [ -d /usr/lib/colorgcc/bin ] && PATH=/usr/lib/colorgcc/bin:$PATH
 
+# Add RVM to PATH for scripting
+[ -d $HOME/.rvm/bin ] && PATH=$PATH:$HOME/.rvm/bin
+
 # Path to oh-my-zsh
 ZSH=$HOME/system/dotfiles/zsh/oh-my-zsh
 
