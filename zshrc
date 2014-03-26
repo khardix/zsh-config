@@ -6,6 +6,7 @@ PATH=~/.local/bin:$PATH
 
 # Add RVM to PATH for scripting
 [ -d $HOME/.rvm/bin ] && PATH=$PATH:$HOME/.rvm/bin
+[ -r $HOME/.rvm/scripts/rvm ] && source $HOME/.rvm/scripts/rvm
 
 # Path to oh-my-zsh
 ZSH=$HOME/system/dotfiles/zsh/oh-my-zsh
