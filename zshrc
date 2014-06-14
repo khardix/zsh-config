@@ -113,8 +113,10 @@ for als in ~zsh/aliases.d/*.zsh; do
   source "$als"
 done
 
-# program specific scripts
-test -r /usr/libexec/mc/mc.sh && source /usr/libexec/mc/mc.sh
+# custom shell variables and scripts fro specific applications
+for cst in ~zsh/specific.d/*.zsh; do
+  source "$cst"
+done
 
 ## Print fortune on launch
 fortune -s
