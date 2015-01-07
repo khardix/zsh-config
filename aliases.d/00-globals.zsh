@@ -4,6 +4,7 @@ alias lll='ls -l --color=always | less -R' # long colored dirs
 alias vimide='vim +NERDTree +TagbarOpen'
 alias gide='gvim +NERDTree +TagbarOpen'
 alias zathura='zathura --fork'
+alias mpv-us='mpv --video-unscaled'
 
 function logout
 {
@@ -40,4 +41,4 @@ function ggr # goto git root
 
 # Suffix aliases
 alias -s php='php -f'
-alias -s pdf='okular'
+alias -s pdf='zathura --fork'
