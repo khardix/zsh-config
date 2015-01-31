@@ -41,6 +41,7 @@ DISABLE_AUTO_UPDATE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(sudo git vi-mode taskwarrior fedpkg)
 
+unset -v GREP_OPTIONS &&
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
@@ -117,6 +118,9 @@ done
 for cst in ~zsh/specific.d/*.zsh; do
   source "$cst"
 done
+
+#unset old/deprecated environment variables
+unset -v GREP_OPTIONS
 
 ## Print fortune on launch
 fortune -s
