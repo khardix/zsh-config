@@ -107,6 +107,7 @@ done
 #Power options
 setopt NO_BEEP #no beeping, ever
 setopt AUTO_CD #auto cd if forgot cd
+unsetopt AUTO_PUSHD #do not push the old dir on directory stack
 setopt CORRECT #try to correct typos
 
 #aliases - process aliases directory
