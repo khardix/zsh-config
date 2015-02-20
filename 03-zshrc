@@ -1,18 +1,14 @@
-# Add .local/bin/ to PATH
-PATH=~/.local/bin:$PATH
+# vim:set ft=zsh:
+#
+# General interactive shell configuration
+#
 
-# Add gcc coloring
-[ -d /usr/lib/colorgcc/bin ] && PATH=/usr/lib/colorgcc/bin:$PATH
-
-# Add RVM to PATH for scripting
-[ -d $HOME/.rvm/bin ] && PATH=$PATH:$HOME/.rvm/bin
-[ -r $HOME/.rvm/scripts/rvm ] && source $HOME/.rvm/scripts/rvm
-
-#plugins=(sudo git vi-mode taskwarrior fedpkg)
+# zsh configuration path
+hash -d zsh=$HOME/system/dotfiles/zsh
 
 #load zgen
-export ZGEN_DIR=$HOME/system/dotfiles/zsh/plugins
-source $HOME/system/dotfiles/zsh/zgen-plugin-manager/zgen.zsh
+export ZGEN_DIR=~zsh/plugins
+source ~zsh/zgen-plugin-manager/zgen.zsh
 
 if ! zgen saved; then
   echo "Creating zgen init script, please be patient..." >&2
@@ -32,7 +28,7 @@ if ! zgen saved; then
 fi
 
 # Load custom theme (not managed by framework)
-source $HOME/system/dotfiles/zsh/khardix.zsh-theme
+source ~zsh/khardix.zsh-theme
 
 # Customize to your needs...
 autoload -U compinit #init completions
@@ -63,10 +59,6 @@ setopt EXTENDED_GLOB
 #set vim commands for command-line editing
 bindkey -v
 
-#and set vim as default editor
-export EDITOR=vim
-export GIT_EDITOR=$EDITOR
-
 ## History setting
 HISTFILE=~/.zshhistory
 HISTSIZE=1000
@@ -86,19 +78,19 @@ bindkey "[A" up-line-or-search
 bindkey "OB" down-line-or-search
 bindkey "[B" down-line-or-search
 
-# zsh configuration path
-hash -d zsh=$HOME/system/dotfiles/zsh
-
-# Named directories
-for names in ~zsh/dirs.d/*.zsh; do
-  source "$names"
-done
-
 #Power options
 setopt NO_BEEP #no beeping, ever
 setopt AUTO_CD #auto cd if forgot cd
 unsetopt AUTO_PUSHD #do not push the old dir on directory stack
 setopt CORRECT #try to correct typos
+
+# Source RVM settings
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
+# Named directories
+for names in ~zsh/dirs.d/*.zsh; do
+  source "$names"
+done
 
 #aliases - process aliases directory
 for als in ~zsh/aliases.d/*.zsh; do
@@ -112,6 +104,3 @@ done
 
 #unset old/deprecated environment variables
 unset -v GREP_OPTIONS
-
-## Print fortune on launch
-fortune -s

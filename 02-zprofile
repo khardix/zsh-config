@@ -1,0 +1,36 @@
+# vim:set ft=zsh:
+# 
+# Defines environment for the login shell.
+# System variables such as path should be set here (not zshenv), as the system
+# defines it commonly in /etc/(z)profile and zshenv would get overwritten
+#
+
+# Editors
+export EDITOR=vim
+export GIT_EDITOR=$EDITOR
+
+# Language
+[[ -z "$LANG" ]] && export LANG='cs_CZ.UTF-8'
+
+# ===== Paths =====
+typeset -gU path cdpath fpath mailpath # Disable duplicates in paths
+
+# Binary search paths
+local -a cond_path # Conditional paths
+# gcc coloring
+[ -d /usr/lib/colorgcc/bin ] && cond_path=($cond_path /usr/lib/colorgcc/bin)
+# Ruby version manager binaries
+[ -d $HOME/.rvm/bin ] && cond_path=($cond_path $HOME/.rvm/bin)
+
+path=(${HOME}/.local/bin ${cond_path} /usr/local/{bin,sbin} $path)
+# backup path - system might decide to override it
+path_bak=$path
+
+# cd paths
+cdpath=(
+  .
+  $HOME
+  $cdpath
+)
+
+# ===== Other env variables =====

@@ -1,0 +1,9 @@
+# vim:set ft=zsh:
+#
+# Defines most basic environment variables, valid for all shells
+#
+
+# Ensure that non-interactive, non-login shell has defined $PATH, etc.
+if [[ "$SHLVL" -eq 1 && ! -o login && -s ${ZDOTDIR:-$HOME}/.zprofile ]]; then
+  source ${ZDOTDIR:-$HOME}/.zprofile
+fi
