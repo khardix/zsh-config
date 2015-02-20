@@ -24,6 +24,9 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/git
   zgen oh-my-zsh plugins/vi-mode
 
+  # extra completions
+  zgen load khardix/fedpkg-zsh
+
   # save init script
   zgen save
 fi
