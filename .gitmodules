@@ -1,3 +1,3 @@
-[submodule "plugins/zgen"]
-	path = plugins/zgen
+[submodule "zgen-plugin-manager"]
+	path = zgen-plugin-manager
 	url = git@github.com:tarjoilija/zgen.git

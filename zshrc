@@ -12,7 +12,7 @@ PATH=~/.local/bin:$PATH
 
 #load zgen
 export ZGEN_DIR=$HOME/system/dotfiles/zsh/plugins
-source $HOME/system/dotfiles/zsh/plugins/zgen/zgen.zsh
+source $HOME/system/dotfiles/zsh/zgen-plugin-manager/zgen.zsh
 
 if ! zgen saved; then
   echo "Creating zgen init script, please be patient..." >&2
