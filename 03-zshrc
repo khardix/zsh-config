@@ -84,9 +84,6 @@ setopt AUTO_CD #auto cd if forgot cd
 unsetopt AUTO_PUSHD #do not push the old dir on directory stack
 setopt CORRECT #try to correct typos
 
-# Source RVM settings
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
 # Named directories
 for names in ~zsh/dirs.d/*.zsh; do
   source "$names"

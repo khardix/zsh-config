@@ -20,11 +20,16 @@ local -a cond_path # Conditional paths
 # gcc coloring
 [ -d /usr/lib/colorgcc/bin ] && cond_path=($cond_path /usr/lib/colorgcc/bin)
 # Ruby version manager binaries
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 [ -d $HOME/.rvm/bin ] && cond_path=($cond_path $HOME/.rvm/bin)
 
-path=(${HOME}/.local/bin ${cond_path} /usr/local/{bin,sbin} $path)
-# backup path - system might decide to override it
-path_bak=$path
+path=(
+  ${HOME}/.local/bin
+  ${cond_path}
+  /usr/local/{bin,sbin}
+  /usr/bin
+  $path
+)
 
 # cd paths
 cdpath=(
