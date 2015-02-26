@@ -4,7 +4,7 @@
 #
 
 ## Print fortune on login shell
-fortune -s
+[ -x /usr/bin/fortune ] && fortune -s
 
 # start X, if not already running
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
