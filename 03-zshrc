@@ -19,6 +19,7 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/sudo
   zgen oh-my-zsh plugins/git
   zgen oh-my-zsh plugins/vi-mode
+  zgen load thegcat/chpwd_profiles
 
   # extra completions
   zgen load khardix/fedpkg-zsh
@@ -26,6 +27,9 @@ if ! zgen saved; then
 
   # save init script
   zgen save
+
+  # source init script
+  source "${ZGEN_DIR}/init.zsh"
 fi
 
 # Load custom theme (not managed by framework)
@@ -85,7 +89,7 @@ setopt AUTO_CD #auto cd if forgot cd
 unsetopt AUTO_PUSHD #do not push the old dir on directory stack
 setopt CORRECT #try to correct typos
 
-# Named directories
+# Named directories and directory profiles
 for names in ~zsh/dirs.d/*.zsh; do
   source "$names"
 done
@@ -95,7 +99,7 @@ for als in ~zsh/aliases.d/*.zsh; do
   source "$als"
 done
 
-# custom shell variables and scripts fro specific applications
+# custom shell variables and scripts for specific applications
 for cst in ~zsh/specific.d/*.zsh; do
   source "$cst"
 done
