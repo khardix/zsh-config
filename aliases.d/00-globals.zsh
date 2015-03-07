@@ -39,6 +39,22 @@ function ggr # goto git root
   fi
 }
 
+function update-configs
+{
+  local cnf_root=$HOME/system/dotfiles
+  local submodules='on-demand'
+
+  while getopts 'f' opt; do
+    case opt in
+      f) submodules='yes' ;;
+    esac
+  done
+
+  echo "Entering config directory..." && pushd "$cnf_root" &>/dev/null
+  git pull --recurse-submodules="$submodules" && git submodule foreach git merge
+  echo "Leaving config directory..." && popd &>/dev/null
+}
+
 # Suffix aliases
 alias -s php='php -f'
 alias -s pdf='zathura --fork'
