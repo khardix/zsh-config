@@ -10,6 +10,9 @@ hash -d zsh=$HOME/system/dotfiles/zsh
 export ZGEN_DIR=~zsh/plugins
 source ~zsh/zgen-plugin-manager/zgen.zsh
 
+# Disable oh-my-zsh auto-update
+export DISABLE_AUTO_UPDATE=true
+
 if ! zgen saved; then
   echo "Creating zgen init script, please be patient..." >&2
 
@@ -29,6 +32,7 @@ if ! zgen saved; then
   zgen save
 
   # source init script
+  echo "Sourcing new zgen init script..." >&2
   source "${ZGEN_DIR}/init.zsh"
 fi
 
