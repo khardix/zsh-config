@@ -6,6 +6,11 @@ alias gide='gvim +NERDTree +TagbarOpen'
 alias zathura='zathura --fork --debug=error'
 alias mpv-us='mpv --video-unscaled'
 
+# Systemd
+alias sc='systemctl'
+alias ssc='sudo systemctl'
+alias scu='systemctl --user'
+
 function logout
 {
   if [ "$XDG_CURRENT_DESKTOP" = "KDE" ]; then
