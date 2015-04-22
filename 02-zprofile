@@ -39,3 +39,6 @@ cdpath=(
 )
 
 # ===== Other env variables =====
+
+# ===== Export previously set variables ======
+[ -x /usr/bin/systemctl ] && systemctl --user import-environment PATH
