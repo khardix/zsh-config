@@ -39,6 +39,7 @@ cdpath=(
 )
 
 # ===== Other env variables =====
+export NO_AT_BRIDGE=1
 
 # ===== Export previously set variables ======
-[ -x /usr/bin/systemctl ] && systemctl --user import-environment PATH
+[ -x /usr/bin/systemctl ] && systemctl --user import-environment PATH NO_AT_BRIDGE DBUS_SESSION_BUS_ADDRESS
