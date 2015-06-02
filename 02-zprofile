@@ -43,3 +43,4 @@ export NO_AT_BRIDGE=1
 
 # ===== Export previously set variables ======
 [ -x /usr/bin/systemctl ] && systemctl --user import-environment PATH NO_AT_BRIDGE DBUS_SESSION_BUS_ADDRESS
+[ -x $HOME/.rvm/bin/rvm ] && rvm use default &>/dev/null
