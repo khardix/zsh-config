@@ -38,6 +38,9 @@ cdpath=(
   $cdpath
 )
 
+# ===== XDG settings =====
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # ===== Other env variables =====
 export NO_AT_BRIDGE=1
 
