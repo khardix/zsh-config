@@ -50,6 +50,9 @@ colors
 autoload -U zsh-mime-setup #do file association
 zsh-mime-setup
 
+autoload -U zcalc zcalc-auto-insert zmv
+zle -N zcalc-auto-insert
+
 # zstyle
 zstyle ':completion:*:descriptions' format "%{${fg[red]}= %d =$reset_color%}"
 zstyle ':completion:*' group-name ''
