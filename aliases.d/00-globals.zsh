@@ -56,6 +56,7 @@ function update-configs
 
   echo "Entering config directory..." && pushd "$cnf_root" &>/dev/null
   git pull --recurse-submodules="$submodules" && git submodule foreach git merge
+  bash setup.sh # run dotbot
   echo "Leaving config directory..." && popd &>/dev/null
 }
 
