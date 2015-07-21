@@ -29,7 +29,7 @@ if ! zgen saved; then
   # extra completions
   zgen load khardix/fedpkg-zsh
   zgen load zsh-users/zsh-completions src
-  zgen load khardix/zsh-pandoc-completion
+  zgen load srijanshetty/zsh-pandoc-completion
 
   # save init script
   zgen save
