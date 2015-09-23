@@ -83,10 +83,21 @@ kh_git()
   echo -n "${blck_start}${branch}:$(git_prompt_short_sha):$(parse_git_dirty)${git_ahead}${blck_end}"
 }
 
+# Display count of total and high-priority tasks
 kh_tasks()
 {
   if [ -e /usr/bin/task ]; then
     echo -n "%{${fg[white]}%}TODO: `task status:pending count` tasks, %{${fg_bold[red]}%}`task status:pending priority:H count` H%{$reset_color%}"
+  fi
+}
+
+# Display next task
+kh_next_task()
+{
+  local next_task
+  if [ -x /usr/bin/task ]; then
+    next_task="$(task next rc.verbose=nothing rc.report.next.columns:description rc.report.next.labels:description limit:1)"
+    echo -n "%{${fg[red]}%}${next_task}%{$reset_color%}"
   fi
 }
 
@@ -102,5 +113,5 @@ else
 PROMPT='${l1_beg}$(kh_identity)$(kh_path)%(?..$(kh_exitcode))$(kh_git)${l1_end}
 ${l2_beg}$(kh_character) '
 
-RPROMPT='$(kh_tasks)'
+RPROMPT='$(kh_next_task)'
 fi
