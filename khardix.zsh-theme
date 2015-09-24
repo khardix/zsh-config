@@ -94,10 +94,12 @@ kh_tasks()
 # Display next task
 kh_next_task()
 {
-  local next_task
+  local task_fields="id,description" next_task_line task_id task_desc
   if [ -x /usr/bin/task ]; then
-    next_task="$(task next rc.verbose=nothing rc.report.next.columns:description rc.report.next.labels:description limit:1)"
-    echo -n "%{${fg[red]}%}${next_task}%{$reset_color%}"
+    next_task_line="$(task next rc.verbose=nothing rc.report.next.columns:$task_fields rc.report.next.labels:$task_fields limit:1)"
+    task_id="$(echo $next_task_line|cut -d' ' -f2)"
+    task_desc="$(echo $next_task_line|cut -d' ' -f1-2 --complement)"
+    echo -n "%{${fg[red]}%}${task_desc}%{$reset_color%} %{${fg[magenta]}%}[${task_id}]%{$reset_color%}"
   fi
 }
 
