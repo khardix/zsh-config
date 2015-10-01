@@ -96,9 +96,9 @@ kh_next_task()
 {
   local task_fields="id,description" next_task_line task_id task_desc
   if [ -x /usr/bin/task ]; then
-    next_task_line="$(task next rc.verbose=nothing rc.report.next.columns:$task_fields rc.report.next.labels:$task_fields limit:1)"
-    task_id="$(echo $next_task_line|cut -d' ' -f2)"
-    task_desc="$(echo $next_task_line|cut -d' ' -f1-2 --complement)"
+    next_task_line="$(task next rc.verbose=nothing rc.report.next.columns:$task_fields rc.report.next.labels:$task_fields limit:1|sed 's/^[[:space:]]*//')"
+    task_id="$(echo $next_task_line|cut -d' ' -f1)"
+    task_desc="$(echo $next_task_line|cut -d' ' -f1 --complement)"
     echo -n "%{${fg[red]}%}${task_desc}%{$reset_color%} %{${fg[magenta]}%}[${task_id}]%{$reset_color%}"
   fi
 }
