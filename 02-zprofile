@@ -40,6 +40,7 @@ cdpath=(
 
 # ===== XDG settings =====
 export XDG_CONFIG_HOME="$HOME/.config"
+eval "$(perl -Mlocal::lib=$HOME/.local/perl5)"
 
 # ===== Other env variables =====
 export NO_AT_BRIDGE=1
