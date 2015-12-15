@@ -13,7 +13,7 @@ export GIT_EDITOR=$EDITOR
 [[ -z "$LANG" ]] && export LANG='cs_CZ.UTF-8'
 
 # ===== Paths =====
-typeset -gU path cdpath fpath mailpath # Disable duplicates in paths
+typeset -gU path cdpath fpath mailpath pythonpath # Disable duplicates in paths
 
 # Binary search paths
 local -a cond_path # Conditional paths
@@ -36,6 +36,13 @@ cdpath=(
   .
   $HOME
   $cdpath
+)
+
+# Python path -- add /usr/local installations
+pythonpath=(
+  $pythonpath
+  /usr/local/lib/python3.?/site-packages(N)
+  /usr/local/lib/python2.?/site-packages(N)
 )
 
 # ===== XDG settings =====

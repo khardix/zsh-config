@@ -5,6 +5,7 @@
 
 # Typedef some extra arrays to act like $PATH (var with :) to $path (array)
 export -TU LD_LIBRARY_PATH ld_library_path
+export -TU PYTHONPATH pythonpath
 
 # Ensure that non-interactive, non-login shell has defined $PATH, etc.
 if [[ "$SHLVL" -eq 1 && ! -o login && -s ${ZDOTDIR:-$HOME}/.zprofile ]]; then
