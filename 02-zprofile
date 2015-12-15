@@ -26,7 +26,7 @@ local -a cond_path # Conditional paths
 path=(
   ${HOME}/.local/bin
   ${cond_path}
-  /usr/local/{bin,sbin}
+  /usr/local/{bin,sbin,usr/bin}
   /usr/bin
   $path
 )
