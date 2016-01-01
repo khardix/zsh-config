@@ -63,7 +63,7 @@ export WORKON_HOME="${XDG_CONFIG_HOME}/python/virtualenv"
 PROJECT_HOME="$HOME/projects/python"
 [ -d "${PROJECT_HOME}" ] && export PROJECT_HOME
 
-VIRTUALENVWRAPPER_SCRIPT="$(which virtualenvwrapper.sh)"
+VIRTUALENVWRAPPER_SCRIPT="$(which virtualenvwrapper.sh 2>/dev/null)"
 [ -x "${VIRTUALENVWRAPPER_SCRIPT}" ] && source "${VIRTUALENVWRAPPER_SCRIPT}"
 
 # ===== Other env variables =====
