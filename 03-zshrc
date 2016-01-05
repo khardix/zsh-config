@@ -33,6 +33,9 @@ if ! zgen saved; then
   zgen load zsh-users/zsh-completions src
   zgen load srijanshetty/zsh-pandoc-completion
 
+  # syntax highlighting -- should be last
+  zgen load zsh-users/zsh-syntax-highlighting
+
   # save init script
   zgen save
 
