@@ -58,10 +58,10 @@ eval "$(perl -Mlocal::lib=$HOME/.local/perl5)"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
 export PYVENV_WORKON_HOME="${XDG_CONFIG_HOME}/python/venv"
-[ -d "${WORKON_HOME}" ] || mkdir -p "${WORKON_HOME}"
+[ -d "${PYVENV_WORKON_HOME}" ] || mkdir -p "${PYVENV_WORKON_HOME}"
 
 PYVENV_PROJECT_HOME="$HOME/projects/python"
-[ -d "${PROJECT_HOME}" ] && export PYVENV_PROJECT_HOME
+[ -d "${PYVENV_PROJECT_HOME}" ] && export PYVENV_PROJECT_HOME
 
 # ===== Other env variables =====
 export NO_AT_BRIDGE=1
