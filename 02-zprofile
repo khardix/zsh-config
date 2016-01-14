@@ -12,10 +12,6 @@ export GIT_EDITOR=$EDITOR
 # Language
 [[ -z "$LANG" ]] && export LANG='cs_CZ.UTF-8'
 
-# ===== XDG settings =====
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
-
 # ===== Paths =====
 typeset -gU path cdpath fpath mailpath pythonpath # Disable duplicates in paths
 
@@ -50,6 +46,17 @@ pythonpath=(
   /usr/local/lib/python3.?/site-packages(N)
   /usr/local/lib/python2.?/site-packages(N)
 )
+
+# ===== Compiler/Make =====
+export CC=gcc
+export CFLAGS="-std=c11 -pedantic -Wall -Wextra"
+
+export CXX=g++
+export CXXFLAGS="-std=c++14 -pedantic -Wall -Wextra"
+
+# ===== XDG settings =====
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
 
 # ===== Perl local lib =====
 eval "$(perl -Mlocal::lib=$HOME/.local/perl5)"
