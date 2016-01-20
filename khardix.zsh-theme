@@ -103,6 +103,14 @@ kh_next_task()
   fi
 }
 
+# Detect python virtual environment
+kh_venv()
+{
+  if [ -n "$VIRTUAL_ENV" ]; then
+    echo -n "${blck_start}%{${fg_bold[blue]}%}$(basename "$VIRTUAL_ENV")%{$reset_color%}${blck_end}"
+  fi
+}
+
 ## spacers
 l1_beg="%{${fg[white]}╭$reset_color%1G%}"
 l2_beg="%{${fg[white]}╰$reset_color%1G%}"
@@ -112,7 +120,7 @@ l1_end="%{${fg[white]}─◇$reset_color%2G%}"
 if ps $PPID|grep mc; then
   PROMPT='$(kh_identity)$(kh_git)${l1_end} '
 else
-PROMPT='${l1_beg}$(kh_identity)$(kh_path)%(?..$(kh_exitcode))$(kh_git)${l1_end}
+PROMPT='${l1_beg}$(kh_identity)$(kh_path)%(?..$(kh_exitcode))$(kh_venv)$(kh_git)${l1_end}
 ${l2_beg}$(kh_character) '
 
 RPROMPT='$(kh_next_task)'
