@@ -58,6 +58,10 @@ export CXXFLAGS="-std=c++14 -pedantic -Wall -Wextra"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 
+# ===== email =====
+export MAILDIR="$HOME/system/mail"
+[ -d "$MAILDIR" ] || mkdir -p "$MAILDIR"
+
 # ===== Perl local lib =====
 eval "$(perl -Mlocal::lib=$HOME/.local/perl5)"
 
