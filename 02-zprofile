@@ -47,6 +47,9 @@ pythonpath=(
   /usr/local/lib/python2.?/site-packages(N)
 )
 
+# ===== Shell parameters =====
+export REPORTTIME=5 # Report time if command takes more than 5 seconds
+
 # ===== Compiler/Make =====
 export CC=gcc
 export CFLAGS="-std=c11 -pedantic -Wall -Wextra"
