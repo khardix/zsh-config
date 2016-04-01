@@ -2,10 +2,17 @@
 
 ## Utility functions
 
-function current_semester()
+function current_semester_doc()
 {
   setopt local_options null_glob
   local semesters=($(print -l ~/(#i)(documents)/uni/mgr/sem-?))
+  echo ${semesters[-1]}
+}
+
+function current_semester_proj()
+{
+  setopt local_options null_glob
+  local semesters=($(print -l ~/(#i)(projects)/uni/mgr/semestr-?))
   echo ${semesters[-1]}
 }
 
@@ -16,4 +23,5 @@ hash -d vim=~config/vim
 hash -d bin=~/.local/bin
 
 # Current semester alias
-hash -d uni="$(current_semester)"
+hash -d uniproj="$(current_semester_proj)"
+hash -d unidoc="$(current_semester_doc)"
