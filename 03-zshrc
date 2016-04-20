@@ -27,7 +27,6 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/colored-man-pages
 
   zgen load thegcat/chpwd_profiles
-  zgen load khardix/pyvenv-wrapper
 
   # extra completions
   zgen load khardix/fedpkg-zsh

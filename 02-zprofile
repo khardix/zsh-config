@@ -71,11 +71,16 @@ eval "$(perl -Mlocal::lib=$HOME/.local/perl5)"
 # ===== Python virtualenv =====
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-export PYVENV_WORKON_HOME="${XDG_CONFIG_HOME}/python/venv"
-[ -d "${PYVENV_WORKON_HOME}" ] || mkdir -p "${PYVENV_WORKON_HOME}"
+export WORKON_HOME="${XDG_CONFIG_HOME}/python/venv"
+[ -d "${WORKON_HOME}" ] || mkdir -p "${WORKON_HOME}"
 
-PYVENV_PROJECT_HOME="$HOME/projects/python"
-[ -d "${PYVENV_PROJECT_HOME}" ] && export PYVENV_PROJECT_HOME
+PROJECT_HOME="$HOME/projects/python"
+[ -d "${PROJECT_HOME}" ] && export PROJECT_HOME
+
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV="${HOME}/.local/bin/virtualenv"
+VIRTUALENVWRAPPER_SCRIPT="${HOME}/.local/bin/virtualenvwrapper.sh"
+[ -x "${VIRTUALENVWRAPPER_SCRIPT}" ] && source "${VIRTUALENVWRAPPER_SCRIPT}"
 
 # ===== Other env variables =====
 export NO_AT_BRIDGE=1
