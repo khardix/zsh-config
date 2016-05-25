@@ -21,6 +21,7 @@ hash -d pthemes=~zsh/oh-my-zsh/themes
 hash -d config=~/system/dotfiles
 hash -d vim=~config/vim
 hash -d bin=~/.local/bin
+hash -d dmnt=/run/media/$USER
 
 # Current semester alias
 hash -d uniproj="$(current_semester_proj)"
