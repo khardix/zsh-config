@@ -6,6 +6,7 @@ alias gide='gvim +NERDTree +TagbarOpen'
 alias zathura='zathura --fork --debug=error'
 alias mpv-us='mpv --video-unscaled'
 alias alot="LC_ALL=en_US.utf8 alot -p $MAILDIR"
+alias view="vim -R"
 
 # Systemd
 alias ssc='sudo systemctl'
