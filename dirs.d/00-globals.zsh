@@ -5,7 +5,7 @@
 function current_semester_doc()
 {
   setopt local_options null_glob
-  local semesters=($(print -l ~/(#i)(documents)/uni/mgr/sem-?))
+  local semesters=($(print -l ~/(#i)(documents)/uni/mgr/semestr-?))
   echo ${semesters[-1]}
 }
 
