@@ -6,6 +6,7 @@ alias gide='gvim +NERDTree +TagbarOpen'
 alias mpv-us='mpv --video-unscaled'
 alias alot="LC_ALL=en_US.utf8 alot -p $MAILDIR"
 alias view="vim -R"
+alias ncn='nmtui-connect'
 
 function zathura
 {
