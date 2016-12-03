@@ -108,6 +108,13 @@ setopt AUTO_CD #auto cd if forgot cd
 unsetopt AUTO_PUSHD #do not push the old dir on directory stack
 setopt CORRECT #try to correct typos
 
+# Environment profile options
+for profile in ~zsh/profiles.d/*.zsh; do
+    source "$profile"
+done
+zstyle ':chpwd:profiles:*' re-execute false
+chpwd_profiles
+
 # Named directories and directory profiles
 for names in ~zsh/dirs.d/*.zsh; do
   source "$names"
