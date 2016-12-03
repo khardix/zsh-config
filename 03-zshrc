@@ -66,6 +66,7 @@ zstyle ':completion:*:descriptions' format "%{${fg[red]}= %d =$reset_color%}"
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select
 zstyle ':completion:*' verbose yes
+zstyle ':completion:*' rehash true
 
 #allow tab completion in the middle of a word
 setopt COMPLETE_IN_WORD
