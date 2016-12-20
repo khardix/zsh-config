@@ -25,6 +25,9 @@ local -a cond_path # Conditional paths
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 [ -d $HOME/.rvm/bin ] && cond_path=($cond_path $HOME/.rvm/bin)
 
+# Rust environment
+[ -d $HOME/.cargo/bin ] && cond_path+="$HOME/.cargo/bin"
+
 path=(
   ${HOME}/.local/bin
   ${cond_path}
