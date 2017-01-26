@@ -7,11 +7,7 @@ alias mpv-us='mpv --video-unscaled'
 alias alot="LC_ALL=en_US.utf8 alot -p $MAILDIR"
 alias view="vim -R"
 alias ncn='nmtui-connect'
-
-function zathura
-{
-    /usr/bin/env zathura --fork --debug=error $@ 2>/dev/null
-}
+alias zathura='zathura --fork'
 
 # Systemd
 alias ssc='sudo systemctl'
