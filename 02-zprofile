@@ -13,7 +13,7 @@ export GIT_EDITOR=$EDITOR
 [[ -z "$LANG" ]] && export LANG='cs_CZ.UTF-8'
 
 # ===== Paths =====
-typeset -gU path cdpath fpath mailpath pythonpath # Disable duplicates in paths
+typeset -gU path cdpath fpath mailpath pythonpath manpath infopath # Disable duplicates in paths
 
 # Binary search paths
 local -a cond_path # Conditional paths
@@ -49,6 +49,10 @@ pythonpath=(
   /usr/local/lib/python3.?/site-packages(N)
   /usr/local/lib/python2.?/site-packages(N)
 )
+
+# Custom man and info paths
+infopath=(${HOME}/.local/share/info $infopath)
+manpath=(${HOME}/.local/share/man $manpath)
 
 # ===== Shell parameters =====
 export REPORTTIME=5 # Report time if command takes more than 5 seconds
