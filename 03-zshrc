@@ -50,6 +50,9 @@ fi
 # Load custom theme (not managed by framework)
 source ~zsh/khardix.zsh-theme
 
+# Add custom compl:qetions
+export fpath=(~zsh/completions.d $fpath)
+
 # Customize to your needs...
 autoload -U compinit #init completions
 compinit -i
