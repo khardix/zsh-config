@@ -54,6 +54,10 @@ pythonpath=(
 infopath=(${HOME}/.local/share/info $infopath)
 manpath=(${HOME}/.local/share/man $manpath)
 
+# ===== Environment modules =====
+modulefile="$HOME/.modules" 
+[ -r "$modulefile" ] && source "$modulefile"
+
 # ===== Shell parameters =====
 export REPORTTIME=5 # Report time if command takes more than 5 seconds
 
