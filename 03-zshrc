@@ -31,6 +31,8 @@ if ! zgen saved; then
 
   zgen load thegcat/chpwd_profiles
 
+  zgen load paulirish/git-open
+
   # extra completions
   zgen load khardix/fedpkg-zsh
   zgen load zsh-users/zsh-completions src
