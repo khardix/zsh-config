@@ -1,0 +1,14 @@
+- defaults:
+    link:
+      relink: True
+      create: True
+
+# Link configuration files to expected places
+- link:
+    ~/.zshenv: 01-zshenv
+    ~/.zprofile: 02-zprofile
+    ~/.zshrc:
+      path: 03-zshrc
+      force: true
+    ~/.zlogin: 04-zlogin
+    ~/.zlogout: 05-zlogout
