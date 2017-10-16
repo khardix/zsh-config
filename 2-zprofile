@@ -1,0 +1,68 @@
+#!/usr/bin/zsh
+# .zprofile -- Early login shell initialization
+# The place for global shell parametrization
+
+
+# ===== Language and localization =====
+export LANG=C LC_MESSAGES=C     # start conservatively
+# => Select better available locale
+[ ${commands[locale]} ] && function {
+    function setlocale {
+        local varname=$1; shift  # the name of the variable to set
+        for candidate in $@; do
+            if command locale -a|grep -qF $candidate; then
+                export $varname=$candidate; break
+            fi
+        done
+    }
+
+    setlocale LANG cs_CZ.utf8 en_US.utf8 C.utf8 C
+    setlocale LC_MESSAGES en_US.utf8 C.utf8 C
+}
+
+
+# ===== Paths =====
+path=(
+    ${HOME}/.local/bin      # My user scripts and binaries
+    $(                      # Dynamic/conditional path components
+        # Rust local installation
+        [ -d "$HOME/.cargo/bin" ] && echo "$HOME/.cargo/bin"
+
+        # Ruby enVironment Manager
+        [ -r "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
+        [ -d "$HOME/.rvm/bin" ] && echo "$HOME/.rvm/bin"
+    )
+    /usr/local/{bin,sbin}   # System-local installations (stows)
+    /usr/{bin,sbin}         # Managed package binaries
+    $path                   # Other entries from system
+)
+
+cdpath=(
+    .                       # Current directory
+    $HOME                   # Home directory
+    $([ -d "$HOME/projects" ] && echo "$HOME/projects")  # project directory
+)
+
+infopath+="$HOME/.local/share/info"     # User-local info pages
+manpath+="$HOME/.local/share/man"       # User-local man pages
+
+
+# ===== Environmental tweaks =====
+# => Shell paramaters
+export REPORTTIME=5         # Report time spent if command take more than 5 sec
+# => Default Make compilers and flags
+export CC='gcc'  CFLAGS='-std=c11 -pedantic -Wall -Wextra'
+export CXX='g++' CXXFLAGS='-std=c++14 -pedantic -Wall -Wextra'
+# => XDG
+export XDG_CONFIG_HOME="$HOME/.config" XDG_DATA_HOME="$HOME/.local/share"
+# => Python Virtual Environment
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+# => GTK without GNOME
+export NO_AT_BRIDGE=1       # Do not use GNOME Accessibility Technologies
+
+
+# ===== Host-specific settings =====
+function {  # Load host-specific zprofile
+    local extra_profile="${0:A:h}/host/$(hostname -s)/zprofile"
+    [ -r "$extra_profile" ] && source "$extra_profile"
+}
