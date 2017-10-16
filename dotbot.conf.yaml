@@ -5,10 +5,10 @@
 
 # Link configuration files to expected places
 - link:
-    ~/.zshenv: 01-zshenv
-    ~/.zprofile: 02-zprofile
+    ~/.zshenv: 1-zshenv
+    ~/.zprofile: 2-zprofile
     ~/.zshrc:
-      path: 03-zshrc
+      path: 3-zshrc
       force: true
-    ~/.zlogin: 04-zlogin
-    ~/.zlogout: 05-zlogout
+    ~/.zlogin: 4-zlogin
+    ~/.zlogout: 5-zlogout
