@@ -3,14 +3,16 @@
 # Exported VALUES will be most probably overwritten by /etc/zprofile;
 # as such, this file should contain only early declarations and special exports
 
-# ===== PATH-like pairings =====
+# ===== PATH-like arrays with unique values =====
+export -U cdpath   # `cd` search path
+export -U fpath    # function search path
+export -U infopath # `info` search paths
+export -U mailpath # file names to check for new mail
+export -U manpath  # `man` search paths
+export -U path     # binary search path
+
+# ===== Extra PATH-like pairings =====
 # -T: bind :-separated variable to an array
 # -U: keep values unique
-export -TU CDPATH           cdpath              # `cd` search path
-export -TU FPATH            fpath               # function search path
-export -TU INFOPATH         infopath            # `info` search paths
 export -TU LD_LIBRARY_PATH  ld_library_path     # dynamic linker search path
-export -TU MAILPATH         mailpath            # file names to check for new mail
-export -TU MANPATH          manpath             # `man` search paths
-export -TU PATH             path                # binary search path
 export -TU PYTHONPATH       pythonpath          # extra paths for python modules
