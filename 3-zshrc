@@ -37,3 +37,19 @@ setopt no_flow_control      # disable ^S/^Q
 setopt transient_rprompt    # remove RPROMPT from display on <CR>
 # => ZLE
 setopt no_beep              # do not beep. ever.
+
+
+# ===== Named directories =====
+# => ZSH configuration path
+# ${(%):-%N} uses prompt expansion for locating currently sourced file (== this file)
+# ${X:A:h} resolves symlinks and returns the dirname of X
+hash -d zsh="${${(%):-%N}:A:h}"
+# => ViM configuration path
+[ -d "$HOME/.vim" ] && hash -d vim="${${:-$HOME/.vim}:A}"
+# => Generic configuration path
+[ -d "$HOME/system/dotfiles" ] && hash -d config="$HOME/system/dotfiles"
+
+
+# ===== Aliases =====
+# => Basic LS aliases
+alias ls='ls --color=auto' l='ls -la' ll='ls -l' lll='ls -l --color=always|less -R'
