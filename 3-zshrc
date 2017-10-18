@@ -1,0 +1,39 @@
+#!/usr/bin/zsh
+# Configuration for all interactive shells.
+# Place to put generic ZSH options, handle plugins, named directories, etc.
+
+# ===== Built-in options =====
+# => Changing directories
+setopt auto_cd              # 'cd' into directory given only its name
+setopt no_auto_pushd        # do not interact with directory stack on 'cd'
+setopt pushd_ignore_dups    # duplicate-free dirstack
+# => Completion
+setopt always_to_end        # always place curson at the end of inserted completion
+setopt hash_list_all        # ensure new commands are hashed before completion
+setopt list_rows_first      # list completions in rows (not in columns)
+# => Globbing
+setopt csh_null_glob        # report error only if no pattern matches
+setopt extended_glob        # enable '^' and friends in globs
+setopt glob_star_short      # **.c == **/*.c
+setopt magic_equal_subst    # enable filename expansion in '--foo=file' params
+setopt mark_dirs            # end directory names with '/'
+setopt numeric_glob_sort    # sort by numbers, if possible
+# => History
+setopt extended_history     # save extra info in history file
+setopt hist_expire_dups_first  # first expire duplicates when trimming
+setopt hist_fcntl_lock      # use OS-provided file locking
+setopt hist_find_no_dups    # ignore duplicates when searching
+setopt hist_ignore_all_dups  # replace all duplicates
+setopt hist_ignore_space    # do not remember commands beginning with space
+setopt hist_reduce_blanks   # trim superfluous whitespace
+setopt hist_save_no_dups    # omit older duplicates when writing the file
+setopt hist_verify          # let user validate results of history expansion
+setopt no_hist_beep         # do not beep on missing history entry
+setopt share_history        # share history file between shells
+# => I/O
+setopt correct              # attempt to correct typos in commands
+setopt no_flow_control      # disable ^S/^Q
+# => Prompts
+setopt transient_rprompt    # remove RPROMPT from display on <CR>
+# => ZLE
+setopt no_beep              # do not beep. ever.
