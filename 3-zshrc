@@ -53,3 +53,24 @@ hash -d zsh="${${(%):-%N}:A:h}"
 # ===== Aliases =====
 # => Basic LS aliases
 alias ls='ls --color=auto' l='ls -la' ll='ls -l' lll='ls -l --color=always|less -R'
+
+#
+# ===== ZLE =====
+# => keybinds
+bindkey -v                  # Use vi-like key binds
+bindkey "OA" up-line-or-search    # ↑ search in history
+bindkey "[A" up-line-or-search    # ↑ search in history
+bindkey "OB" down-line-or-search  # ↓ search in history
+bindkey "[B" down-line-or-search  # ↓ search in history
+# => extra functionality
+autoload -U colors promptinit compinit zsh-mime-setup
+colors                      # Initialize color arrays
+promptinit                  # Initialize theme selection
+compinit -d "$XDG_DATA_HOME/zsh/compdump" -i  # initialize completion, skipping insecure files
+zsh-mime-setup              # Autocreate mime-based suffix aliases
+# => Completion style
+zstyle ':completion:*:descriptions' format "%{${fg[red]}%}[%d]%{$reset_color%}"
+zstyle ':completion:*' group-name ''    # Use completion tag as a group name
+zstyle ':completion:*' menu select      # Always use menu for selection
+zstyle ':completion:*' rehash yes       # Rehash before completing external command
+zstyle ':completion:*' verbose yes      # Display option description
