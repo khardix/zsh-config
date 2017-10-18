@@ -1,0 +1,7 @@
+#!/usr/bin/zsh
+# Late login shell initialization
+# Place for automatic setup and similar actions
+
+# Data directories
+# => Ensure existence of XDG directories (incl. zsh dir)
+mkdir -p "$XDG_CONFIG_HOME" "$XDG_DATA_HOME/zsh"
