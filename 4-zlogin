@@ -5,3 +5,7 @@
 # Data directories
 # => Ensure existence of XDG directories (incl. zsh dir)
 mkdir -p "$XDG_CONFIG_HOME" "$XDG_DATA_HOME/zsh"
+
+# Startup
+# => Start X server if one is not running yet
+[ -z $DISPLAY -a $XDG_VTNR -eq 1 -a ${commands[startx]} ] && exec startx
