@@ -1,0 +1,19 @@
+#!/usr/bin/zsh
+# Khardix's new prompt theme for zsh
+
+# Main theme setup function
+function prompt_khardix_setup
+{
+    setopt localoptions prompt_subst prompt_percent
+
+    # Wrap a string in block
+    function block {
+        local -r start='%1{%B%F{white}[%f%b%}'
+        local -r stop='%1{%B%F{white}]%f%b%}'
+        print -Pn "$start$@$stop"
+    }
+
+    export PS1="$(block %n@%m) »"
+}
+
+prompt_khardix_setup "$@"

@@ -43,6 +43,8 @@ cdpath=(
     $([ -d "$HOME/projects" ] && echo "$HOME/projects")  # project directory
 )
 
+fpath+="${${(%):-%N}:A:h}/functions"    # Add functions from this directory
+
 infopath+="$HOME/.local/share/info"     # User-local info pages
 manpath+="$HOME/.local/share/man"       # User-local man pages
 
