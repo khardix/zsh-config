@@ -57,10 +57,12 @@ export XDG_CONFIG_HOME="$HOME/.config" XDG_DATA_HOME="$HOME/.local/share"
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 # => GTK without GNOME
 export NO_AT_BRIDGE=1       # Do not use GNOME Accessibility Technologies
-# => Shell paramaters
+# => Shell parameters
 export REPORTTIME=5         # Report time spent if command take more than 5 sec
 export HISTFILE="$XDG_DATA_HOME/zsh/history"  # history storage
 export HISTSIZE=1000 SAVEHIST=1000  # Store 1000 history entries
+# => Plugin management
+export ZPLUG_HOME "$XDG_DATA_DIR/zsh/plugged/" # Plugin storage directory
 
 
 # ===== Host-specific settings =====
