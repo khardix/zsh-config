@@ -62,7 +62,7 @@ export REPORTTIME=5         # Report time spent if command take more than 5 sec
 export HISTFILE="$XDG_DATA_HOME/zsh/history"  # history storage
 export HISTSIZE=1000 SAVEHIST=1000  # Store 1000 history entries
 # => Plugin management
-export ZPLUG_HOME "$XDG_DATA_DIR/zsh/plugged/" # Plugin storage directory
+export ZPLUG_HOME="$XDG_DATA_HOME/zsh/plugged" # Plugin storage directory
 
 
 # ===== Host-specific settings =====
