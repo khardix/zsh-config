@@ -1,19 +1,43 @@
 #!/usr/bin/zsh
 # Khardix's new prompt theme for zsh
 
+function prompt_khardix_help {
+    cat <<'EOF'
+This prompt is configurable via zsh styles:
+
+    Colors (:prompt:khardix:color, use zsh/terminfo values):
+        user-name: regular user name [default: 'red'].
+        root-name: root user name [default: 208 (orange)].
+        local-host: local host name [default: 'red'].
+        remote-host: remote host name [default: 'yellow'].
+EOF
+}
+
 # Main theme setup function
 function prompt_khardix_setup
 {
     setopt localoptions prompt_subst prompt_percent
 
-    # Wrap a string in block
-    function block {
-        local -r start='%1{%B%F{white}[%f%b%}'
-        local -r stop='%1{%B%F{white}]%f%b%}'
-        print -Pn "$start$@$stop"
+    # Current user and host name
+    function identity {
+
+        # Load colors from zstyle definitions
+        local user root localhost remote
+        zstyle -s :prompt:khardix:color user-name user; user=${user:-'red'}
+        zstyle -s :prompt:khardix:color root-name root; root=${root:-'208'}
+        zstyle -s :prompt:khardix:color local-host localhost; localhost=${localhost:-'red'}
+        zstyle -s :prompt:khardix:color remote-host remote; remote=${remote:-'yellow'}
+
+        local name_color="%(!.$root.$user)"
+        local host_color="$(
+            [[ -z "$SSH_CLIENT" ]] && echo "$localhost" || echo "$remote"
+        )"
+
+        # bold & colored name@host
+        echo -n "%{%B%F{$name_color}%}%n%{%f%b%}@%{%B%F{$host_color}%}%m%{%f%b%}"
     }
 
-    export PS1="$(block %n@%m) »"
+    export PS1="$(identity):%(!.#.$) "
 }
 
 prompt_khardix_setup "$@"
