@@ -10,6 +10,8 @@ This prompt is configurable via zsh styles:
         root-name: root user name [default: 208 (orange)].
         local-host: local host name [default: 'red'].
         remote-host: remote host name [default: 'yellow'].
+
+        path: path components (working directory, etc.) [default: 'yellow'].
 EOF
 }
 
@@ -44,7 +46,15 @@ function prompt_khardix_setup
         echo -n "%{%B%F{$name_color}%}%n%{%f%b%}@%{%B%F{$host_color}%}%m%{%f%b%}"
     }
 
-    export PS1="$(block identity)%(!.#.$) "
+    # Display first
+    function working_directory {
+        local path_color
+        zstyle -s :prompt:khardix:color path path_color; path_color=${path_color:-'yellow'}
+
+        echo -n "%{%F{$path_color}%}%3~%{%f%}"
+    }
+
+    export PS1="$(block identity)$(block working_directory)%(!.#.$) "
 }
 
 prompt_khardix_setup "$@"
