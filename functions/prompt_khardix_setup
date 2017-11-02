@@ -46,7 +46,6 @@ function prompt_khardix_setup
         echo -n "%{%B%F{$name_color}%}%n%{%f%b%}@%{%B%F{$host_color}%}%m%{%f%b%}"
     }
 
-    # Display first
     function working_directory {
         local path_color
         zstyle -s :prompt:khardix:color path path_color; path_color=${path_color:-'yellow'}
