@@ -23,8 +23,9 @@ function prompt_khardix_setup
     # Draw a block around another function result
     function block {
         local func=$1; shift
+        local output="$($func)"
 
-        echo -n " %2{%B::%b%} $($func)"
+        [ "$output" ] && echo -n " %2{%B::%b%} $output"
     }
 
     # Current user and host name
