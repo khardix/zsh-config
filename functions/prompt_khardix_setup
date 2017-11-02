@@ -24,7 +24,7 @@ function prompt_khardix_setup
     function block {
         local func=$1; shift
 
-        echo -n "%1{%B[%b%}$($func)%1{%B]%b%}"
+        echo -n " %2{%B::%b%} $($func)"
     }
 
     # Current user and host name
@@ -54,7 +54,7 @@ function prompt_khardix_setup
         echo -n "%{%F{$path_color}%}%3~%{%f%}"
     }
 
-    export PS1="$(block identity)$(block working_directory)%(!.#.$) "
+    export PS1="$(identity)$(block working_directory)%(!.#.$) "
 }
 
 prompt_khardix_setup "$@"
