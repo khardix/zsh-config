@@ -1,6 +1,8 @@
 #!/usr/bin/zsh
 # Khardix's new prompt theme for zsh
 
+autoload -Uz vcs_info
+
 function prompt_khardix_help {
     cat <<'EOF'
 This prompt is configurable via zsh styles:
@@ -52,7 +54,22 @@ function prompt_khardix_setup
         echo -n "%{%F{$path_color}%}%3~%{%f%}"
     }
 
-    export PS1="$(identity)$(block working_directory)%(!.#.$) "
+    function vcs_status {
+        echo -n "${vcs_info_msg_0_}"
+    }
+
+    # Assemble prompt before each invocation
+    function assemble_prompt {
+        PS1="$(identity)$(block working_directory)$(block vcs_status) %(!.#.$) "
+    }
+
+    # Setup VCS display style
+    zstyle ':vcs_info:git:*' get-revision 'true'
+    zstyle ':vcs_info:git:*' formats '±(%F{magenta}%b%f@%F{yellow}%.7i%f:%m)'
+
+    # Register necessary hooks
+    add-zsh-hook precmd vcs_info
+    add-zsh-hook precmd assemble_prompt
 }
 
 prompt_khardix_setup "$@"
