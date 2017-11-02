@@ -18,8 +18,6 @@ EOF
 # Main theme setup function
 function prompt_khardix_setup
 {
-    setopt localoptions prompt_subst prompt_percent
-
     # Draw a block around another function result
     function block {
         local func=$1; shift
