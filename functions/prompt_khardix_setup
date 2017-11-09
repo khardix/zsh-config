@@ -25,7 +25,15 @@ function prompt_khardix_setup
         local func=$1; shift
         local output="$($func)"
 
-        [ "$output" ] && echo -n " %2{%B::%b%} $output"
+        [ "$output" ] && echo -n "[$output]"
+    }
+
+    # Draw separator and a block around another function result
+    function sep-block {
+        local func=$1; shift
+        local output="$(block $func)"
+
+        [ "$output" ] && echo -n "─$output"
     }
 
     # Current user and host name
@@ -60,7 +68,7 @@ function prompt_khardix_setup
 
     # Assemble prompt before each invocation
     function assemble_prompt {
-        PS1="$(identity)$(block working_directory)$(block vcs_status) %(!.#.$) "
+        PS1="╭$(block identity)$(sep-block working_directory)$(sep-block vcs_status) %(!.#.$) "
     }
 
     # Setup VCS display style
