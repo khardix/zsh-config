@@ -20,20 +20,9 @@ EOF
 # Main theme setup function
 function prompt_khardix_setup
 {
-    # Draw a block around another function result
+    # Draw a block around text
     function block {
-        local func=$1; shift
-        local output="$($func)"
-
-        [ "$output" ] && echo -n "[$output]"
-    }
-
-    # Draw separator and a block around another function result
-    function sep-block {
-        local func=$1; shift
-        local output="$(block $func)"
-
-        [ "$output" ] && echo -n "─$output"
+        echo -n "[$1]"
     }
 
     # Current user and host name
@@ -62,13 +51,23 @@ function prompt_khardix_setup
         echo -n "%{%F{$path_color}%}%3~%{%f%}"
     }
 
-    function vcs_status {
-        echo -n "${vcs_info_msg_0_}"
-    }
-
     # Assemble prompt before each invocation
     function assemble_prompt {
-        PS1="╭$(block identity)$(sep-block working_directory)$(sep-block vcs_status) %(!.#.$) "
+        local -a ps1_parts=(
+            # Identity and hostname
+            "╭$(block $(identity))"
+            # Working directory
+            "─$(block $(working_directory))"
+            # Git & friends info
+            "─$(block $vcs_info_msg_0_)"
+
+            $'\n'  # Line separator
+
+            # The prompt privilege character
+            "╰%# "
+        )
+
+        export PS1="${(j::)ps1_parts}"
     }
 
     # Setup VCS display style
