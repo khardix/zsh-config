@@ -20,6 +20,9 @@ EOF
 # Main theme setup function
 function prompt_khardix_setup
 {
+    # Turn on required prompt options
+    prompt_opts=(cr sp percent subst)
+
     # Draw a block around text
     function block {
         echo -n "[$1]"
@@ -51,32 +54,16 @@ function prompt_khardix_setup
         echo -n "%{%F{$path_color}%}%3~%{%f%}"
     }
 
-    # Assemble prompt before each invocation
-    function assemble_prompt {
-        local -a ps1_parts=(
-            # Identity and hostname
-            "╭$(block $(identity))"
-            # Working directory
-            "─$(block $(working_directory))"
-            # Git & friends info
-            "─$(block $vcs_info_msg_0_)"
+    # === Assemble the prompts ===
+    local -a ps1_line1=(
+        "╭$(block $(identity))"
+        "$(block $(working_directory))"
+    )
+    local -a ps1_line2=(
+        "╰%#» "
+    )
 
-            $'\n'  # Line separator
-
-            # The prompt privilege character
-            "╰%# "
-        )
-
-        export PS1="${(j::)ps1_parts}"
-    }
-
-    # Setup VCS display style
-    zstyle ':vcs_info:git:*' get-revision 'true'
-    zstyle ':vcs_info:git:*' formats '±(%F{magenta}%b%f@%F{yellow}%.7i%f:%m)'
-
-    # Register necessary hooks
-    add-zsh-hook precmd vcs_info
-    add-zsh-hook precmd assemble_prompt
+    export PS1="${(j:─:)ps1_line1}"$'\n'"${(j:─:)ps1_line2}"
 }
 
 prompt_khardix_setup "$@"
