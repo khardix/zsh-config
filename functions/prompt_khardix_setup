@@ -14,7 +14,28 @@ This prompt is configurable via zsh styles:
         remote-host: remote host name [default: 'yellow'].
 
         path: path components (working directory, etc.) [default: 'yellow'].
+
+        branch-clean: VCS branch name without uncommited changes [default: 'green'].
+        branch-dirty: VCS branch name with uncommited changes [defualt: 'red'].
 EOF
+}
+
+# VCS info hooks
+
+# Indicate repo/branch status by changing branch color
+function +vi-git_clean_branch
+{
+    local clean dirty
+    zstyle -s ':prompt:khardix:color' branch-clean clean; clean=${clean:-'green'}
+    zstyle -s ':prompt:khardix:color' branch-dirty dirty; dirty=${dirty:-'red'}
+
+    if  [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == 'true' ]] \
+        && git status --porcelain | grep '??\|M' &>/dev/null
+    then
+        hook_com[branch]="%F{$dirty}${hook_com[branch]}%f"
+    else
+        hook_com[branch]="%F{$clean}${hook_com[branch]}%f"
+    fi
 }
 
 # Main theme setup function
@@ -68,6 +89,8 @@ function prompt_khardix_setup
     zstyle ':vcs_info:git:khardix:*' actionformats "─$(block ${action_form})"
     zstyle ':vcs_info:*:khardix:*' get-revision 'true'
     zstyle ':vcs_info:*:khardix:*' use-prompt-escapes 'true'
+
+    zstyle ':vcs_info:git+set-message:*' hooks git_clean_branch
 
     # === Assemble the prompts ===
     local -a ps1_line1=(
