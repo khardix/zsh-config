@@ -16,7 +16,8 @@ This prompt is configurable via zsh styles:
         path: path components (working directory, etc.) [default: 'yellow'].
 
         branch-clean: VCS branch name without uncommited changes [default: 'green'].
-        branch-dirty: VCS branch name with uncommited changes [defualt: 'red'].
+        branch-dirty: VCS branch name with uncommited changes [default: 'red'].
+        commit-diff: number of missing commits in local/remote repo [default: 208 (orange)].
 EOF
 }
 
@@ -36,6 +37,24 @@ function +vi-git_clean_branch
     else
         hook_com[branch]="%F{$clean}${hook_com[branch]}%f"
     fi
+}
+
+# Look up the commit difference between local and remote HEAD
+function +vi-git_commit_difference
+{
+    local count
+    zstyle -s ':prompt:khardix:color' commit-diff count; count=${count:-'208'}
+
+    local ahead=$(git rev-list ${hook_com[branch_orig]}@{upstream}..HEAD 2>/dev/null | wc -l)
+    local behind=$(git rev-list HEAD..${hook_com[branch_orig]}@{upstream} 2>/dev/null | wc -l)
+
+    local -a colored_status=(
+        "%F{$count}${ahead}%f"
+        '%F{27}⇅%f'
+        "%F{$count}${behind}%f"
+    )
+
+    hook_com[misc]="%B${(j::)colored_status}%b"
 }
 
 # Main theme setup function
@@ -82,7 +101,7 @@ function prompt_khardix_setup
 
     add-zsh-hook precmd query_vcs
 
-    local -r normal_form='%b:%.7i'  # VCS format in normal circumstances
+    local -r normal_form='%b:%m:%F{yellow}%.7i%f'  # VCS format in normal circumstances
     local -r action_form='%F{magenta}%a%f on '${normal_form}  # VCS format when an action is going on
 
     zstyle ':vcs_info:git:khardix:*' formats "─$(block ${normal_form})"
@@ -90,7 +109,7 @@ function prompt_khardix_setup
     zstyle ':vcs_info:*:khardix:*' get-revision 'true'
     zstyle ':vcs_info:*:khardix:*' use-prompt-escapes 'true'
 
-    zstyle ':vcs_info:git+set-message:*' hooks git_clean_branch
+    zstyle ':vcs_info:git+set-message:*' hooks git_clean_branch git_commit_difference
 
     # === Assemble the prompts ===
     local -a ps1_line1=(
