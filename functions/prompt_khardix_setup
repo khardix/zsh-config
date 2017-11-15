@@ -58,13 +58,18 @@ function +vi-git_commit_difference
     local ahead=$(git rev-list ${hook_com[branch_orig]}@{upstream}..HEAD 2>/dev/null | wc -l)
     local behind=$(git rev-list HEAD..${hook_com[branch_orig]}@{upstream} 2>/dev/null | wc -l)
 
+    # Add bold face to non-zero commit numbers
+    function bolden { (( $1 )) && echo "%B$1%b" || echo "$1" }
+    ahead="$(bolden $ahead)"
+    behind="$(bolden $behind)"
+
     local -a colored_status=(
         "%F{$count}${ahead}%f"
-        '%F{27}⇅%f'
+        '%F{27}%B⇅%b%f'
         "%F{$count}${behind}%f"
     )
 
-    hook_com[misc]="%B${(j::)colored_status}%b"
+    hook_com[misc]="${(j::)colored_status}"
 }
 
 # Other hooks and hook-like functions
