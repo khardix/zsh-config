@@ -1,0 +1,11 @@
+#!/usr/bin/zsh
+# cmclean - CMake clean
+
+# Delete CMake garbage
+find . -iwholename '*cmake*' -not -name CMakeLists.txt -delete
+
+# Delete Makefiles in the same directories as CMakeLists.txt
+find . -name CMakeLists.txt | while read cml; do
+    local mkfile="${cml:h}/Makefile"
+    if [[ -f "$mkfile" ]]; then rm -f "$mkfile"; fi
+done

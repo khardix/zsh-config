@@ -44,6 +44,7 @@ cdpath=(
 )
 
 fpath+="${${(%):-%N}:A:h}/functions"    # Add functions from this directory
+fpath+="${${(%):-%N}:A:h}/autoload"     # Locally managed autoload functions
 
 infopath+="$HOME/.local/share/info"     # User-local info pages
 manpath+="$HOME/.local/share/man"       # User-local man pages

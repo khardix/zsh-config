@@ -63,7 +63,7 @@ bindkey "[A" up-line-or-search    # ↑ search in history
 bindkey "OB" down-line-or-search  # ↓ search in history
 bindkey "[B" down-line-or-search  # ↓ search in history
 # => extra functionality
-autoload -U colors promptinit compinit zsh-mime-setup
+autoload -Uz colors promptinit compinit zsh-mime-setup
 colors                      # Initialize color arrays
 promptinit                  # Initialize theme selection
 compinit -d "$XDG_DATA_HOME/zsh/compdump" -i  # initialize completion, skipping insecure files
@@ -76,6 +76,8 @@ zstyle ':completion:*' rehash yes       # Rehash before completing external comm
 zstyle ':completion:*' verbose yes      # Display option description
 # => Prompt style
 prompt khardix
+# => Autoload all local functions
+autoload -Uz ~zsh/autoload/*(*:t)
 
 
 # ===== Plugin management =====
