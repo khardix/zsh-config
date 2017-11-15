@@ -50,6 +50,8 @@ manpath+="$HOME/.local/share/man"       # User-local man pages
 
 
 # ===== Environmental tweaks =====
+# => Editor
+export EDITOR=vim
 # => Default Make compilers and flags
 export CC='gcc'  CFLAGS='-std=c11 -pedantic -Wall -Wextra'
 export CXX='g++' CXXFLAGS='-std=c++14 -pedantic -Wall -Wextra'
