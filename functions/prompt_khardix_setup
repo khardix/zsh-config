@@ -67,6 +67,20 @@ function +vi-git_commit_difference
     hook_com[misc]="%B${(j::)colored_status}%b"
 }
 
+# Other hooks and hook-like functions
+function +khardix-pyvenv
+{
+    [[ -n "$VIRTUAL_ENV" ]] || return  # no-op if no virtual env is active
+    # Detect Python 3
+    if [[ -x "$VIRTUAL_ENV"/**/python3(#qY1) ]]; then
+        local color='green'
+    else
+        local color='cyan'
+    fi
+
+    echo "$(+khardix-block %F{$color}∫:$(basename "$VIRTUAL_ENV")%f)"
+}
+
 # Main theme setup function
 function prompt_khardix_setup
 {
@@ -120,6 +134,7 @@ function prompt_khardix_setup
     local -a ps1_line1=(
         "$(+khardix-block $(identity) ╭)"
         "$(+khardix-block $(working_directory))"
+        '$(+khardix-pyvenv)'  # Python virtual environment
         '${vcs_info_msg_0_}'  # VCS status
     )
     local -a ps1_line2=(
