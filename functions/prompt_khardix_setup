@@ -21,6 +21,16 @@ This prompt is configurable via zsh styles:
 EOF
 }
 
+# Helper functions
+
+# Draw a separator and a block around a text
+function +khardix-block {
+    local text="${1}"
+    local sep="${2:-─}"
+
+    echo -n "${sep}[${text}]"
+}
+
 # VCS info hooks
 
 # Indicate repo/branch status by changing branch color
@@ -63,11 +73,6 @@ function prompt_khardix_setup
     # Turn on required prompt options
     prompt_opts=(cr sp percent subst)
 
-    # Draw a block around text
-    function block {
-        echo -n "[$1]"
-    }
-
     # Current user and host name
     function identity {
 
@@ -104,8 +109,8 @@ function prompt_khardix_setup
     local -r normal_form='%b:%m:%F{yellow}%.7i%f'  # VCS format in normal circumstances
     local -r action_form='%F{magenta}%a%f on '${normal_form}  # VCS format when an action is going on
 
-    zstyle ':vcs_info:git:khardix:*' formats "─$(block ${normal_form})"
-    zstyle ':vcs_info:git:khardix:*' actionformats "─$(block ${action_form})"
+    zstyle ':vcs_info:git:khardix:*' formats "$(+khardix-block ${normal_form})"
+    zstyle ':vcs_info:git:khardix:*' actionformats "$(+khardix-block ${action_form})"
     zstyle ':vcs_info:*:khardix:*' get-revision 'true'
     zstyle ':vcs_info:*:khardix:*' use-prompt-escapes 'true'
 
@@ -113,8 +118,8 @@ function prompt_khardix_setup
 
     # === Assemble the prompts ===
     local -a ps1_line1=(
-        "╭$(block $(identity))"
-        "─$(block $(working_directory))"
+        "$(+khardix-block $(identity) ╭)"
+        "$(+khardix-block $(working_directory))"
         '${vcs_info_msg_0_}'  # VCS status
     )
     local -a ps1_line2=(
