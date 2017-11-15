@@ -118,6 +118,12 @@ function prompt_khardix_setup
         echo -n "%{%F{$path_color}%}%3~%{%f%}"
     }
 
+    function exit_code {
+        local color_fail='red' color_other='yellow'
+
+        echo -n "?:%B%(1?.%F{$color_fail}.%F{$color_other})%?%f%b"
+    }
+
     # VCS status
     function query_vcs {
         vcs_info 'khardix'
@@ -139,6 +145,7 @@ function prompt_khardix_setup
     local -a ps1_line1=(
         "$(+khardix-block $(identity) ╭)"
         "$(+khardix-block $(working_directory))"
+        "%(?..$(+khardix-block "$(exit_code)"))"
         '$(+khardix-pyvenv)'  # Python virtual environment
         '${vcs_info_msg_0_}'  # VCS status
     )
