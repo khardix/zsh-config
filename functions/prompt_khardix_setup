@@ -59,7 +59,7 @@ function +vi-git_commit_difference
     local behind=$(git rev-list HEAD..${hook_com[branch_orig]}@{upstream} 2>/dev/null | wc -l)
 
     # Add bold face to non-zero commit numbers
-    function bolden { (( $1 )) && echo "%B$1%b" || echo "$1" }
+    function bolden { (( $1 )) && echo "%B$1%b" || echo "$1" }
     ahead="$(bolden $ahead)"
     behind="$(bolden $behind)"
 
