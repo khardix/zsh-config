@@ -41,7 +41,7 @@ function +vi-git_clean_branch
     zstyle -s ':prompt:khardix:color' branch-dirty dirty; dirty=${dirty:-'red'}
 
     if  [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == 'true' ]] \
-        && git status --porcelain | grep '??\|M' &>/dev/null
+        && git status --porcelain | grep '??\|M\|A' &>/dev/null
     then
         hook_com[branch]="%F{$dirty}${hook_com[branch]}%f"
     else
