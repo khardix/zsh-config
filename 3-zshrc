@@ -74,6 +74,8 @@ zstyle ':completion:*' group-name ''    # Use completion tag as a group name
 zstyle ':completion:*' menu select      # Always use menu for selection
 zstyle ':completion:*' rehash yes       # Rehash before completing external command
 zstyle ':completion:*' verbose yes      # Display option description
+# Try normal completion, then case-insensitive, then middle of word
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
 # => Prompt style
 prompt khardix
 # => Autoload all local functions
