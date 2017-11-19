@@ -8,5 +8,5 @@ hash -d bin=~/.local/bin
 hash -d dmnt=/run/media/"$USER"
 
 # University related projects and documents
-hash -d uniproj="$(print ~/(#i)(projects)/uni/mgr/semestr-?(/OnY1N^M))"
-hash -d unidoc="$(print ~/(#i)(documents)/uni/mgr/semestr-?(/OnY1N^M))"
+hash -d uniproj="$(print ~/(#i)(projects)/uni/mgr/semestr-?(/On[1]N^M))"
+hash -d unidoc="$(print ~/(#i)(documents)/uni/mgr/semestr-?(/On[1]N^M))"
