@@ -48,11 +48,27 @@ hash -d zsh="${${(%):-%N}:A:h}"
 [ -d "$HOME/.vim" ] && hash -d vim="${${:-$HOME/.vim}:A}"
 # => Generic configuration path
 [ -d "$HOME/system/dotfiles" ] && hash -d config="$HOME/system/dotfiles"
+# => Source extra and host-specific directories
+function {
+    local -a extras=(
+        ~zsh/"named-dirs.zsh"
+        ~zsh/"host/$(hostname -s)/named-dirs.zsh"
+    )
+    for e in $extras; do [[ -r "$e" ]] && source "$e"; done
+}
 
 
 # ===== Aliases =====
 # => Basic LS aliases
 alias ls='ls --color=auto' l='ls -la' ll='ls -l' lll='ls -l --color=always|less -R'
+# => Source extra and host-specific aliases
+function {
+    local -a extras=(
+        ~zsh/"aliases.zsh"
+        ~zsh/"host/$(hostname -s)/aliases.zsh"
+    )
+    for e in $extras; do [[ -r "$e" ]] && source "$e"; done
+}
 
 #
 # ===== ZLE =====
