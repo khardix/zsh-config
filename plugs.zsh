@@ -28,6 +28,9 @@ zplug "plugins/pip", from:oh-my-zsh     # Cached package completion for pip
 zplug "plugins/python", from:oh-my-zsh  # Completion and clean function for python
 zplug "plugins/taskwarrior", from:oh-my-zsh  # Smart task and project completion
 
+# => Additional standalone completions
+zplug "Schnouki/git-annex-zsh-completion"
+
 # => Manage my own plugins
 zplug "khardix/fedpkg-zsh", if:"[[ -n ${commands[fedpkg]} || -n ${commands[rhpkg]} ]]"
 
