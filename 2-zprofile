@@ -69,7 +69,10 @@ export HISTSIZE=1000 SAVEHIST=1000  # Store 1000 history entries
 # => Plugin management
 export ZPLUG_HOME="$XDG_DATA_HOME/zsh/plugged" # Plugin storage directory
 # => Colors
-eval `dircolors --sh`       # LS_COLORS from configuration
+function { # LS_COLORS from configuration
+    local db_path="$XDG_CONFIG_HOME/dircolors"
+    [[ -r "$db_path" ]] && eval $(dircolors --sh "$db_path")
+}
 
 
 # ===== Host-specific settings =====
