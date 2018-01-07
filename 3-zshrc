@@ -60,7 +60,7 @@ function {
 
 # ===== Aliases =====
 # => Basic LS aliases
-alias ls='ls --color=auto' l='ls -la' ll='ls -l' lll='ls -l --color=always|less -R'
+alias ls='ls --color=auto' l='ls -la' ll='ls -lh' lll='ls -lh --color=always|less -R'
 # => Source extra and host-specific aliases
 function {
     local -a extras=(
