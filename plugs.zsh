@@ -33,6 +33,7 @@ zplug "Schnouki/git-annex-zsh-completion"
 
 # => Manage my own plugins
 zplug "khardix/fedpkg-zsh", if:"[[ -n ${commands[fedpkg]} || -n ${commands[rhpkg]} ]]"
+zplug "~config/mail", from:local
 
 # ===== Finalization =====
 zplug load          # Source all installed plugins and add them to $path
