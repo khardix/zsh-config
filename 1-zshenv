@@ -8,7 +8,6 @@ export -U cdpath   # `cd` search path
 export -U fpath    # function search path
 export -U infopath # `info` search paths
 export -U mailpath # file names to check for new mail
-export -U manpath  # `man` search paths
 export -U path     # binary search path
 
 # ===== Extra PATH-like pairings =====

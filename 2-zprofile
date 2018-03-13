@@ -47,7 +47,7 @@ fpath+="${${(%):-%N}:A:h}/functions"    # Add functions from this directory
 fpath+="${${(%):-%N}:A:h}/autoload"     # Locally managed autoload functions
 
 infopath+="$HOME/.local/share/info"     # User-local info pages
-manpath+="$HOME/.local/share/man"       # User-local man pages
+export MANPATH=":$HOME/.local/share/man" # User-local man pages
 
 
 # ===== Environmental tweaks =====
@@ -70,6 +70,8 @@ export HISTFILE="$XDG_DATA_HOME/zsh/history"  # history storage
 export HISTSIZE=1000 SAVEHIST=1000  # Store 1000 history entries
 # => Plugin management
 export ZPLUG_HOME="$XDG_DATA_HOME/zsh/plugged" # Plugin storage directory
+# => Password management
+export PASSWORD_STORE_ENABLE_EXTENSIONS="true" # Enable local pass extensions
 # => Colors
 function { # LS_COLORS from configuration
     local db_path="$XDG_CONFIG_HOME/dircolors"
