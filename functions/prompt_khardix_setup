@@ -153,7 +153,7 @@ function prompt_khardix_setup
         "╰%# "
     )
 
-    export PS1="${(j::)ps1_line1}"$'\n'"${(j::)ps1_line2}"
+    PS1="${(j::)ps1_line1}"$'\n'"${(j::)ps1_line2}"
 }
 
 prompt_khardix_setup "$@"
