@@ -6,12 +6,12 @@
 # ===== PATH-like arrays with unique values =====
 export -U cdpath   # `cd` search path
 export -U fpath    # function search path
-export -U infopath # `info` search paths
 export -U mailpath # file names to check for new mail
 export -U path     # binary search path
 
 # ===== Extra PATH-like pairings =====
 # -T: bind :-separated variable to an array
 # -U: keep values unique
+export -TU INFOPATH         infopath            # `info` search paths
 export -TU LD_LIBRARY_PATH  ld_library_path     # dynamic linker search path
 export -TU PYTHONPATH       pythonpath          # extra paths for python modules
