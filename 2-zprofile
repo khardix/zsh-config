@@ -24,11 +24,8 @@ export LANG=C LC_MESSAGES=C     # start conservatively
 # ===== Paths =====
 path=(
     ${HOME}/.local/bin      # My user scripts and binaries
-    $(                      # Dynamic/conditional path components
-        # Rust local installation
+    $(
         [ -d "$HOME/.cargo/bin" ] && echo "$HOME/.cargo/bin"
-
-        # Ruby enVironment Manager
         [ -r "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
         [ -d "$HOME/.rvm/bin" ] && echo "$HOME/.rvm/bin"
     )
