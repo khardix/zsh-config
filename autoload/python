@@ -1,0 +1,14 @@
+#!/usr/bin/zsh
+# Smart handling of python binary
+
+setopt LOCAL_OPTIONS
+
+# If Pipfile is in the tree, use it
+local -r pipfile_glob='(../)#Pipfile(N:a)'
+if [ ${~pipfile_glob} ]; then
+    PIPENV_PIPFILE="$(echo ${~pipfile_glob})" pipenv run -- python "$@"
+    return $?
+fi
+
+# If all else fails, use system python 3
+python3 "$@"
