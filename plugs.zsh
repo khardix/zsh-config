@@ -1,5 +1,7 @@
 #!/usr/bin/zsh
 # zplug configuration and setup
+# Skip if running from ranger
+[[ $RANGER_SHELL ]] && return
 
 # ===== Auto-installation =====
 # => Test if all commands are available
