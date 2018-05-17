@@ -29,6 +29,7 @@ zplug "plugins/git", from:oh-my-zsh     # Aliases for git subcommands
 zplug "plugins/pip", from:oh-my-zsh     # Cached package completion for pip
 zplug "plugins/python", from:oh-my-zsh  # Completion and clean function for python
 zplug "plugins/taskwarrior", from:oh-my-zsh  # Smart task and project completion
+zplug "plugins/vi-mode", from:oh-my-zsh # Better vi-mode
 
 # => Additional standalone completions
 zplug "Schnouki/git-annex-zsh-completion"
