@@ -97,9 +97,6 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS:-''}  # Color the c
 prompt khardix
 # => Autoload all local functions
 autoload -Uz ~zsh/autoload/*(*:t)
-# => Start in vim normal mode by default
-zle-line-init() { zle -K vicmd }
-zle -N zle-line-init
 
 
 # ===== Plugin management =====
