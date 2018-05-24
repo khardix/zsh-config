@@ -10,3 +10,6 @@ alias scu='systemctl --user'
 
 # Media applications
 [[ -n "${commands[zathura]}" ]] && alias zathura='zathura --fork'
+
+# Remote services
+[[ -n "${commands[pass]}" ]] && alias twine='TWINE_PASSWORD="$(pass show www/pypi.org)" twine'
