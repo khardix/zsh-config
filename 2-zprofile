@@ -40,8 +40,13 @@ cdpath=(
     $([ -d "$HOME/projects" ] && echo "$HOME/projects")  # project directory
 )
 
-fpath+="${${(%):-%N}:A:h}/functions"    # Add functions from this directory
-fpath+="${${(%):-%N}:A:h}/autoload"     # Locally managed autoload functions
+fpath=(
+    "${${(%):-%N}:A:h}/functions"    # Add functions from this directory
+    "${${(%):-%N}:A:h}/autoload"     # Locally managed autoload functions
+    $fpath                           # System fpath
+    "${HOME}/.local/share/zsh/compfunc"  # Local auto-generated completions
+    "${HOME}"/.rustup/toolchains/stable-*/**/zsh/site-functions(/NY1)  # Stable rust toolchain
+)
 export FPATH
 
 infopath+="$HOME/.local/share/info"     # User-local info pages

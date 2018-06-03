@@ -3,6 +3,10 @@
       relink: True
       create: True
 
+- shell:
+  - description: Ensure existence of data directories
+    command: mkdir -p $HOME/.local/share/zsh/compfunc
+
 # Link configuration files to expected places
 - link:
     ~/.zshenv: 1-zshenv
